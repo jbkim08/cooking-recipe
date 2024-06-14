@@ -7,6 +7,7 @@ import Create from "./pages/create/Create";
 
 import "./App.css";
 import Navbar from "./components/Navbar";
+import ThemeSelector from "./components/ThemeSelector";
 
 function App() {
   //리액트 라우트는 최상단에 브라우저라우트>라우츠>라우트
@@ -14,6 +15,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Navbar />
+        <ThemeSelector />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/create" element={<Create />} />

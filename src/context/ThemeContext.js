@@ -15,7 +15,7 @@ const themeReducer = (state, action) => {
 
 //프로바이더 컨포넌트
 export function ThemeProvider({ children }) {
-  const [state, dispatch] = useReducer(themeReducer, { color: "blue" });
+  const [state, dispatch] = useReducer(themeReducer, { color: "#58249c" });
   const changeColor = (color) => {
     dispatch({ type: "CHANGE_COLOR", payload: color });
   };

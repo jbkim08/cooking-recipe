@@ -5,10 +5,10 @@ import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 
 const Navbar = () => {
-  const { color, changeColor } = useContext(ThemeContext);
+  const { color } = useContext(ThemeContext);
   return (
     <div className="navbar" style={{ backgroundColor: color }}>
-      <nav onClick={() => changeColor("pink")}>
+      <nav>
         <Link to="/" className="brand">
           <h1>쿠킹 레시피</h1>
         </Link>
