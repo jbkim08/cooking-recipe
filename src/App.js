@@ -8,11 +8,14 @@ import Create from "./pages/create/Create";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import ThemeSelector from "./components/ThemeSelector";
+import { useContext } from "react";
+import { ThemeContext } from "./context/ThemeContext";
 
 function App() {
+  const { mode } = useContext(ThemeContext);
   //리액트 라우트는 최상단에 브라우저라우트>라우츠>라우트
   return (
-    <div className="App">
+    <div className={`App ${mode}`}>
       <BrowserRouter>
         <Navbar />
         <ThemeSelector />
