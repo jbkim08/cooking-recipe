@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import "./Create.css";
+import { useFetch } from "../../hooks/useFetch";
 
 const Create = () => {
   //새 레시피 작성시 제목, 요리방법, 요리시간
@@ -10,9 +11,12 @@ const Create = () => {
   const [newIngredient, setNewIngredient] = useState("");
   const [ingredients, setIngredients] = useState([]);
   const ingredientInput = useRef(); //리액트에서 선택방법
+  // postData메서드로 서버로 보낼 데이터를 입력하면 요청됨
+  const { postData } = useFetch("http://localhost:3030/recipes", "POST");
+
   const handleSubmit = (e) => {
     e.preventDefault(); //기존 이벤트 중지
-    console.log(title, method, cookingTime);
+    postData({ title, method, cookingTime: cookingTime + "분", ingredients });
   };
   const handleAdd = (e) => {
     e.preventDefault(); //기존 이벤트 중지
