@@ -1,6 +1,7 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Create.css";
 import { useFetch } from "../../hooks/useFetch";
+import { useNavigate } from "react-router-dom";
 
 const Create = () => {
   //새 레시피 작성시 제목, 요리방법, 요리시간
@@ -12,7 +13,12 @@ const Create = () => {
   const [ingredients, setIngredients] = useState([]);
   const ingredientInput = useRef(); //리액트에서 선택방법
   // postData메서드로 서버로 보낼 데이터를 입력하면 요청됨
-  const { postData } = useFetch("http://localhost:3030/recipes", "POST");
+  const { postData, data } = useFetch("http://localhost:3030/recipes", "POST");
+  const navigate = useNavigate(); //라우트 이동 객체
+  // 서버에 post요청후 data가 리턴되면(저장완료) => 홈으로 리다이렉트
+  useEffect(() => {
+    if (data) navigate("/");
+  }, [data, navigate]);
 
   const handleSubmit = (e) => {
     e.preventDefault(); //기존 이벤트 중지
