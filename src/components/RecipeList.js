@@ -2,6 +2,10 @@ import { Link } from "react-router-dom";
 import "./RecipeList.css";
 
 const RecipeList = ({ recipes }) => {
+  //데이터가 없을경우 배열길이가 0이므로 바로 return (종료)
+  if (recipes.length === 0) {
+    return <div className="error">검색된 레시피가 없습니다.</div>;
+  }
   return (
     <div className="recipe-list">
       {recipes.map((recipe) => (
